@@ -122,11 +122,9 @@ def edit_product(request,productid):
     return render(request, "edit_product.html", dict )
 
 def save_edit_product(request, productid):
-    p_name = request.POST['productname']
     p_qty = request.POST['productqty']
     p_price = request.POST['productprice']
     data = Product.objects.get(productid=productid)
-    data.productname = p_name
     data.productqty = p_qty
     data.productprice = p_price
     data.save()
