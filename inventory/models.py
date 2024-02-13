@@ -9,6 +9,9 @@ class Supplier(models.Model):
     supplierphonenum = models.CharField(max_length=12)
     supplieraddress = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.supplierid
+
 class Product(models.Model):
     productid = models.CharField(max_length = 8, primary_key = True)
     productname = models.TextField()
