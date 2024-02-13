@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
-from .forms import ReceiverForm, ProductForm
+from .forms import ReceiverForm, ProductForm, SupplierForm
 from inventory.models import Supplier, Product, Receiver
 from django.http import HttpResponseRedirect
 from django.urls import reverse

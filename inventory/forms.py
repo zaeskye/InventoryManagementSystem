@@ -1,6 +1,11 @@
 from django import forms
 from django.contrib.auth import authenticate
-from .models import Product, Receiver
+from .models import Product, Supplier, Receiver
+
+class SupplierForm(forms.ModelForm):
+    class Meta:
+        model = Supplier
+        fields = ['supplierid','suppliername','supplieremail','supplierphonenum','supplieraddress']
 
 class ProductForm(forms.ModelForm):
     class Meta:
