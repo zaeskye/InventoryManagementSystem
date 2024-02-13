@@ -130,7 +130,7 @@ def save_edit_product(request, productid):
     data.productqty = p_qty
     data.productprice = p_price
     data.save()
-    return HttpResponseRedirect(reverse("product"))
+    return HttpResponseRedirect(reverse("inventory:product"))
 
 def delete_product(request,productid):
     data = Product.objects.get(productid=productid)

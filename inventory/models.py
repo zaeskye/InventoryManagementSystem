@@ -19,6 +19,9 @@ class Product(models.Model):
     productqty = models.IntegerField()
     productprice = models.DecimalField(max_digits=10, decimal_places=2)
 
+    def __str__(self):
+        return self.productname
+
     @property
     def supplier_name(self):
         return self.supplier.suppliername
