@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
-from .forms import ReceiverForm
+from .forms import ReceiverForm, ProductForm
 from inventory.models import Supplier, Product, Receiver
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -71,12 +71,12 @@ def save_edit_supplier(request, supplierid):
     data.supplieremail = sp_email
     data.supplieraddress = sp_address
     data.save()
-    return HttpResponseRedirect(reverse("supplier"))
+    return HttpResponseRedirect(reverse('inventory:supplier'))
 
 def delete_supplier(request, supplierid):
     data = Supplier.objects.get(supplierid=supplierid)
     data.delete()
-    return HttpResponseRedirect(reverse("supplier"))
+    return HttpResponseRedirect(reverse('inventory:supplier'))
 
 def add_product(request):
     if request.method == 'POST':
@@ -130,12 +130,12 @@ def save_edit_product(request, productid):
     data.productqty = p_qty
     data.productprice = p_price
     data.save()
-    return HttpResponseRedirect(reverse("inventory:product"))
+    return HttpResponseRedirect(reverse('inventory:product'))
 
 def delete_product(request,productid):
     data = Product.objects.get(productid=productid)
     data.delete()
-    return HttpResponseRedirect(reverse("product"))
+    return HttpResponseRedirect(reverse('inventory:product'))
 
 def app_form(request):
     if request.method == 'POST':
@@ -185,4 +185,4 @@ def save_edit_receiver(request, receiverid):
     data = Receiver.objects.get(receiverid=receiverid)
     data.receivestatus = receive_status
     data.save()
-    return HttpResponseRedirect(reverse("receiver"))
+    return HttpResponseRedirect(reverse('inventory:receiver'))
