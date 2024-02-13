@@ -65,12 +65,20 @@
 
                 <br>
 
-                <center><button type="submit" class="btn btn-success">Save</button></center>
+                <center>
+                    <button type="submit" href="/" class="btn btn-success">Save</button>
+                    <button id="backButton" type="button" href="/" class="btn btn-secondary">Back</button>
+                </center>
             </form>
 
             
         </div>
 
+        <script>
+            document.getElementById("backButton").addEventListener("click", function() {
+                window.history.go(-1);
+            });
+        </script>
         <script src="{% static 'js/sidenav.js' %}"></script>
     </body>
 </html>
