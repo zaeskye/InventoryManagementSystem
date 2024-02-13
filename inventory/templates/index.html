@@ -1,0 +1,59 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Index</title>
+        <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/sidenav.css' %}">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+    <body>
+        <div class="sidenav">
+            <a href="{% url 'inventory:index' %}"><i class="fa fa-dashboard"></i> Dashboard</a>
+            
+            <button class="dropdown-btn">Product
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                <a href="{% url 'inventory:add_product' %}">New Product</a>
+                <a href="{% url 'inventory:product' %}">List</a>
+            </div>
+
+            <a href="{% url 'inventory:app_form' %}">Application Form</a>
+
+            <a href="{% url 'inventory:receiver' %}">Receiver</a>
+
+            <button class="dropdown-btn">Suppliers
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                <a href="{% url 'inventory:add_supplier' %}">New Supplier</a>
+                <a href="{% url 'inventory:supplier' %}">List</a>
+            </div>
+
+            <a href="#">About</a>
+        </div>
+
+        <div class="main">
+            <h1>Dashboard</h1>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+                        <div class="card-header">Products</div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ total_products }}</h5>
+                            <p class="card-text">Total number of products in inventory.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="{% static 'js/sidenav.js' %}"></script>
+        <script src="{% static 'js/chart.min.js' %}"></script>
+    </body>
+</html>

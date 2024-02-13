@@ -1,0 +1,92 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>New Supplier</title>
+        <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/sidenav.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}"> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+    <body>
+        <div class="sidenav">
+            <a href="{% url 'inventory:index' %}"><i class="fa fa-dashboard"></i> Dashboard</a>
+            
+            <button class="dropdown-btn">Product
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                <a href="{% url 'inventory:add_product' %}">New Product</a>
+                <a href="{% url 'inventory:product' %}">List</a>
+            </div>
+
+            <a href="{% url 'inventory:app_form' %}">Application Form</a>
+
+            <a href="{% url 'inventory:receiver' %}">Receiver</a>
+
+            <button class="dropdown-btn">Suppliers
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                <a href="{% url 'inventory:add_supplier' %}">New Supplier</a>
+                <a href="{% url 'inventory:supplier' %}">List</a>
+            </div>
+
+            <a href="#">About</a>
+        </div>
+
+        <div class="main">
+            <div class="left-part">
+                <h1>New Supplier</h1>
+                <div class="btn-group"></div>
+            </div>
+            <form action="add_supplier" method="post">
+                {% csrf_token %}
+                <div class="title">
+                    <i class="fas fa-pencil-alt"></i>
+                    <h2>ADD HERE</h2>
+                </div>
+
+                <div class="info">
+                    <div class="form-row">
+                        <div class="form-group col-md-2">
+                            <label for="supplierid">Supplier ID:</label>
+                            <input type="text" class="form-control" id="supplierid" name="supplierid" placeholder="Supplier ID">
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="suppliername">Supplier Name:</label>
+                            <input type="text" class="form-control" id="suppliername" name="suppliername" placeholder="Supplier Name">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="supplierphonenum">Phone Number:</label>
+                            <input type="text" class="form-control" id="supplierphonenum" name="supplierphonenum" placeholder="Phone Number">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="supplieremail">Email:</label>
+                            <input type="email" class="form-control" id="supplieremail" name="supplieremail" placeholder="Email">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="supplieraddress">Address:</label>
+                        <input type="text" class="form-control" id="supplieraddress" name="supplieraddress" placeholder="Address">
+                    </div>
+                </div>
+                <center><button type="submit" href="/" class="btn btn-success">Submit</button></center>
+            </form>
+        </div>
+
+        <br><br><br>
+        {{message}}
+
+        <script src="{% static 'js/sidenav.js' %}"></script>
+    </body>
+</html>

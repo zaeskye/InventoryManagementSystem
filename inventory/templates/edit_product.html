@@ -1,0 +1,76 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Edit Product</title>
+        <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/sidenav.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+    <body>
+        <div class="sidenav">
+            <a href="{% url 'inventory:index' %}"><i class="fa fa-dashboard"></i> Dashboard</a>
+            
+            <button class="dropdown-btn">Product
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                <a href="{% url 'inventory:add_product' %}">New Product</a>
+                <a href="{% url 'inventory:product' %}">List</a>
+            </div>
+
+            <a href="{% url 'inventory:app_form' %}">Application Form</a>
+
+            <a href="{% url 'inventory:receiver' %}">Receiver</a>
+
+            <button class="dropdown-btn">Suppliers
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                <a href="{% url 'inventory:add_supplier' %}">New Supplier</a>
+                <a href="{% url 'inventory:supplier' %}">List</a>
+            </div>
+
+            <a href="#">About</a>
+        </div>
+
+        <div class="main">
+            <h1><strong>Edit Product</strong></h1><br><br>
+            <form action="save_edit_product/{{data.productid}}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="productname">Product Name:</label>
+                    <input type="text" class="form-control" id="productname" name="productname" placeholder="Product Name" value="{{data.productname}}" disabled>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="supplier">Supplier:</label>
+                        <input type="text" class="form-control" id="supplier" name="supplier" placeholder="Supplier" value="{{data.supplier}}" disabled>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label for="productqty">Quantity:</label>
+                        <input type="number" id="productqty" name="productqty" class="form-control" placeholder="Quantity">
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <label for="productprice">Price:</label>
+                        <input type="text" id="productprice" name="productprice" placeholder="Price">
+                    </div>
+                </div>
+
+                <br>
+
+                <center><button type="submit" class="btn btn-success">Save</button></center>
+            </form>
+
+            
+        </div>
+
+        <script src="{% static 'js/sidenav.js' %}"></script>
+    </body>
+</html>

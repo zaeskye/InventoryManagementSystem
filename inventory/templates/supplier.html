@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Supplier List</title>
+        <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/sidenav.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+    <body>
+        <div class="sidenav">
+            <a href="{% url 'inventory:index' %}"><i class="fa fa-dashboard"></i> Dashboard</a>
+            
+            <button class="dropdown-btn">Product
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                <a href="{% url 'inventory:add_product' %}">New Product</a>
+                <a href="{% url 'inventory:product' %}">List</a>
+            </div>
+
+            <a href="{% url 'inventory:app_form' %}">Application Form</a>
+
+            <a href="{% url 'inventory:receiver' %}">Receiver</a>
+
+            <button class="dropdown-btn">Suppliers
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                <a href="{% url 'inventory:add_supplier' %}">New Supplier</a>
+                <a href="{% url 'inventory:supplier' %}">List</a>
+            </div>
+
+            <a href="#">About</a>
+        </div>
+
+        <div class="main">
+            <br>
+            <h2>Supplier List</h2>
+
+            <a href="{% url 'inventory:add_supplier' %}" style="float: right;" class="btn btn-success">Add New Supplier</a>
+
+            <br><br>
+
+            <table class="table table-css table-bordered table-hover">
+                <thead class="thead-dark align-middle">
+                    <tr>
+                        <th class="align-middle" width="8%">Supplier ID</td>
+                        <th class="align-middle" width="18%">Supplier Name</td>
+                        <th class="align-middle" width="18%">Phone Number</td>
+                        <th class="align-middle" width="15%">Email</td>
+                        <th class="align-middle" width="28%">Address</td>
+                        <th class="align-middle" width="20%">Actions</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for data in allsupplier %}
+                    <tr>
+                        <td class="align-middle">{{data.supplierid}}</td>
+                        <td class="align-middle">{{data.suppliername}}</td>
+                        <td class="align-middle">{{data.supplierphonenum}}</td>
+                        <td class="align-middle">{{data.supplieremail}}</td>
+                        <td class="align-middle">{{data.supplieraddress}}</td>
+                        <td class="align-middle">
+                            <a href="edit_supplier/{{data.supplierid}}" class="btn btn-success">Edit Details</a>&nbsp;
+                            <a href="delete_supplier/{{data.supplierid}}" class="btn btn-danger">Delete Supplier</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <script src="{% static 'js/sidenav.js' %}"></script>
+    </body>
+</html>
