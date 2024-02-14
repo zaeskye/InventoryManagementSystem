@@ -19,14 +19,14 @@ def login_view(request):
 def index(request):
     products = Product.objects.all()
     all_prods = len(Product.objects.all())
-    total_products = all_prods
+    total_products = Product.objects.count()
     context = {
         'title': 'Home',
         'products': products,
         'count_products': all_prods,
         'total_products': total_products,
     }
-    return render (request,"index.html")
+    return render (request,"index.html", context)
 
 def add_supplier(request):
     if request.method == 'POST':
@@ -69,7 +69,7 @@ def save_edit_supplier(request, supplierid):
     data.supplieremail = sp_email
     data.supplieraddress = sp_address
     data.save()
-    return HttpResponseRedirect(reverse('inventory:supplier'))
+    return HttpResponseRedirect(reverse('supplier'))
 
 def delete_supplier(request, supplierid):
     data = Supplier.objects.get(supplierid=supplierid)
