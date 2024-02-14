@@ -61,12 +61,10 @@ def edit_supplier(request,supplierid):
     return render(request, "edit_supplier.html", dict)
 
 def save_edit_supplier(request, supplierid):
-    sp_name = request.POST['suppliername']
-    sp_email = request.POST['supplieremail']
     sp_phonenum = request.POST['supplierphonenum']
+    sp_email = request.POST['supplieremail']
     sp_address = request.POST['supplieraddress']
     data = Supplier.objects.get(supplierid=supplierid)
-    data.suppliername = sp_name
     data.supplierphonenum = sp_phonenum
     data.supplieremail = sp_email
     data.supplieraddress = sp_address
