@@ -38,10 +38,9 @@
         </div>
 
         <div class="main">
-            <strong>Edit Supplier</strong>
+            <h1><strong>Edit Supplier</strong></h1><br><br>
             <form action="save_edit_supplier/{{data.supplierid}}" method="post">
                 {% csrf_token %}
-
                 <div class="form-group">
                         <label for="suppliername">Supplier Name:</label>
                         <input type="text" class="form-control" id="suppliername" name="suppliername" placeholder="Supplier Name" value="{{data.suppliername}}" disabled>
@@ -64,10 +63,18 @@
                     <input type="text" class="form-control" id="supplieraddress" name="supplieraddress" placeholder="Address">
                 </div>
 
-                <center><button type="submit" href="/" class="btn btn-success">Save</button></center>
+                <center>
+                    <button type="submit" href="/" class="btn btn-success">Save</button>
+                    <button id="backButton" type="button" href="/" class="btn btn-secondary">Back</button>
+                </center>
             </form>
         </div>
 
+        <script>
+            document.getElementById("backButton").addEventListener("click", function() {
+                window.history.go(-1);
+            });
+        </script>
         <script src="{% static 'js/sidenav.js' %}"></script>
     </body>
 </html>
