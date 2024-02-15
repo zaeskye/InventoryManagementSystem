@@ -65,24 +65,22 @@ def supplier(request):
     return render(request, "supplier.html", dict)
 
 def edit_supplier(request,supplierid):
-    data = Supplier.objects.filter(supplierid=supplierid)
+    data = Supplier.objects.get(supplierid=supplierid)
     dict = {
         'data':data
     }
     return render(request, "edit_supplier.html", dict)
 
 def save_edit_supplier(request, supplierid):
-    sp_name = request.POST['suppliername']
     sp_phonenum = request.POST['supplierphonenum']
     sp_email = request.POST['supplieremail']
     sp_address = request.POST['supplieraddress']
     data = Supplier.objects.get(supplierid=supplierid)
-    data.suppliername = sp_name
     data.supplierphonenum = sp_phonenum
     data.supplieremail = sp_email
     data.supplieraddress = sp_address
     data.save()
-    return HttpResponseRedirect(reverse('supplier'))
+    return HttpResponseRedirect(reverse('inventory:supplier'))
 
 def delete_supplier(request, supplierid):
     data = Supplier.objects.get(supplierid=supplierid)
