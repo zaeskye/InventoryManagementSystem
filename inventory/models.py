@@ -10,13 +10,13 @@ class Supplier(models.Model):
     supplieraddress = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.supplierid
+        return self.suppliername
 
 class Product(models.Model):
     productid = models.CharField(max_length = 8, primary_key = True)
     productname = models.TextField()
     supplier = models.ForeignKey(Supplier, on_delete=models.CASCADE)
-    productqty = models.IntegerField()
+    productqty = models.PositiveIntegerField(default=0)
     productprice = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):

@@ -43,23 +43,23 @@
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="productname">Product Name:</label>
-                    <input type="text" class="form-control" id="productname" name="productname" placeholder="Product Name" value="{{data.productname}}" disabled>
+                    <input type="text" class="form-control" id="productname" name="productname" value="{{data.productname}}" disabled>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="supplier">Supplier:</label>
-                        <input type="text" class="form-control" id="supplier" name="supplier" placeholder="Supplier" value="{{data.supplier}}" disabled>
+                        <input type="text" class="form-control" id="supplier" name="supplier" value="{{data.supplier}}" disabled>
                     </div>
 
                     <div class="form-group col-md-4">
                         <label for="productqty">Quantity:</label>
-                        <input type="number" id="productqty" name="productqty" class="form-control" placeholder="Quantity">
+                        <input type="number" id="productqty" name="productqty" class="form-control" value="{{data.productqty}}">
                     </div>
 
                     <div class="form-group col-md-2">
                         <label for="productprice">Price:</label>
-                        <input type="text" id="productprice" name="productprice" placeholder="Price">
+                        <input type="text" id="productprice" name="productprice" value="{{data.productprice}}">
                     </div>
                 </div>
 

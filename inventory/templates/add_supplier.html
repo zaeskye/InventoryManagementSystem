@@ -40,14 +40,14 @@
 
         <div class="main">
             <div class="left-part">
-                <h1>New Supplier</h1>
+                <h1>Add Supplier</h1>
                 <div class="btn-group"></div>
             </div>
             <form action="add_supplier" method="post">
                 {% csrf_token %}
                 <div class="title">
                     <i class="fas fa-pencil-alt"></i>
-                    <h2>ADD HERE</h2>
+                    <h2>Add Supplier</h2>
                 </div>
 
                 <div class="info">
@@ -80,13 +80,21 @@
                         <input type="text" class="form-control" id="supplieraddress" name="supplieraddress" placeholder="Address">
                     </div>
                 </div>
-                <center><button type="submit" href="/" class="btn btn-success">Submit</button></center>
+                <center>
+                    <button type="submit" href="/" class="btn btn-success">Submit</button>
+                    <button id="backButton" type="button" href="/" class="btn btn-secondary">Back</button>
+                </center>
             </form>
         </div>
 
         <br><br><br>
-        {{message}}
+        {{ message }}
 
+        <script>
+            document.getElementById("backButton").addEventListener("click", function() {
+                window.history.go(-1);
+            });
+        </script>
         <script src="{% static 'js/sidenav.js' %}"></script>
     </body>
 </html>

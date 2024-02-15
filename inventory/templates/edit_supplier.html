@@ -42,8 +42,8 @@
             <form action="save_edit_supplier/{{data.supplierid}}" method="post">
                 {% csrf_token %}
                 <div class="form-group">
-                        <label for="suppliername">Supplier Name:</label>
-                        <input type="text" class="form-control" id="suppliername" name="suppliername" placeholder="Supplier Name" value="{{data.suppliername}}" disabled>
+                     <label for="suppliername">Supplier Name:</label>
+                    <input type="text" class="form-control" id="suppliername" name="suppliername" value="{{ data.suppliername }}" disabled>
                 </div>
 
                 <div class="form-row">
