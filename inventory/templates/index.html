@@ -42,14 +42,64 @@
             <h1>Dashboard</h1>
 
             <div class="row">
-                <div class="col-md-3">
-                    <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
-                        <div class="card-header">Products</div>
+                <div class="col">
+                    <div class="card text-white bg-primary mb-3" style="max-width: 18rem;height: 90%;">
+                        <div class="card-header">Total Product</div>
                         <div class="card-body">
-                            <h5 class="card-title">{{ count_products }}</h5>
-                            <p class="card-text">Total number of products in inventory.</p>
+                            <p class="card-text">{{ count_products }}</p>
                         </div>
                     </div>
+                </div>
+
+                <div class="col">
+                    {% for product in out_of_stock_products %}
+                    <div class="card text-white bg-danger mb-3" style="max-width: 18rem; height: 90%;">
+                        <div class="card-header">Out of Stock</div>
+                        <div class="card-body">
+                            <p class="card-text">Product ID: {{ product.productid }}</p>
+                            <p class="card-text">Product name: {{ product.productname }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="col">
+                    <div class="card text-white bg-success mb-3" style="max-width: 18rem; height: 90%;">
+                        <div class="card-header">Most Quantity Product</div>
+                        <div class="card-body">
+                            {% if most_quantity_product %}
+                            <p class="card-text">Product ID: {{ most_quantity_product.productid }}</p>
+                                <p class="card-text">Product Name: {{ most_quantity_product.productname }}</p>
+                                <p class="card-text">Current Quantity: {{ most_quantity_product.productqty }}</p>
+                            {% else %}
+                                <p class="card-text">No product with the highest quantity found.</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card text-white bg-warning mb-3" style="width: 100%">
+                <div class="card-header">Low Stock</div>
+                <div class="card-body">
+                    <table class="table text-white">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for product in low_quantity_products %}
+                            <tr>
+                                <td>{{ product.productid }}</td>
+                                <td>{{ product.productname }}</td>
+                                <td>{{ product.productqty }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

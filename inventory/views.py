@@ -17,14 +17,25 @@ def login_view(request):
     return render(request, 'registration/login.html')
 
 def index(request):
+    low_quantity_products = Product.objects.filter(productqty__range=[1, 10])
     products = Product.objects.all()
     all_prods = len(Product.objects.all())
     total_products = Product.objects.count()
+    out_of_stock_products = Product.objects.filter(productqty=0)
+    print(len(out_of_stock_products))
+    if products:
+        max_quantity = max(products, key=lambda x: x.productqty).productqty
+        most_quantity_product = Product.objects.filter(productqty=max_quantity).first()
+    else:
+        most_quantity_product = None
     context = {
         'title': 'Home',
         'products': products,
         'count_products': all_prods,
         'total_products': total_products,
+        'low_quantity_products': low_quantity_products,
+        'out_of_stock_products': out_of_stock_products,
+        'most_quantity_product': most_quantity_product,
     }
     return render (request,"index.html", context)
 
@@ -61,10 +72,12 @@ def edit_supplier(request,supplierid):
     return render(request, "edit_supplier.html", dict)
 
 def save_edit_supplier(request, supplierid):
+    sp_name = request.POST['suppliername']
     sp_phonenum = request.POST['supplierphonenum']
     sp_email = request.POST['supplieremail']
     sp_address = request.POST['supplieraddress']
     data = Supplier.objects.get(supplierid=supplierid)
+    data.suppliername = sp_name
     data.supplierphonenum = sp_phonenum
     data.supplieremail = sp_email
     data.supplieraddress = sp_address
