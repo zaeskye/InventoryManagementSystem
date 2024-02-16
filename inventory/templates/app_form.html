@@ -73,8 +73,8 @@
                         <label for="productname">Product Name:</label>
                         <select class="form-control" id="product" name="product">
                             <option value="">Select a product</option>
-                            {% for value in allproduct %}
-                                <option value="{{value.productname}}">{{value.productname}}</option>
+                            {% for product in products %}
+                                <option value="{{product.productid}}">{{product.productname}}</option>
                             {% endfor %}
                         </select>
                     </div>
