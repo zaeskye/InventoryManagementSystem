@@ -64,6 +64,15 @@ def supplier(request):
     }
     return render(request, "supplier.html", dict)
 
+def search_supplier(request):
+    query = request.GET.get('q')
+    if query:
+        suppliers = Supplier.objects.filter(suppliername__icontains=query)
+        context = {'search_results_supplier': suppliers}
+    else:
+        context = {}
+    return render(request, "supplier.html", context)
+
 def edit_supplier(request,supplierid):
     data = Supplier.objects.get(supplierid=supplierid)
     dict = {
@@ -160,6 +169,13 @@ def app_form(request):
         productname = request.POST['product']
         receive_qty = request.POST['receiveqty']
         receive_date = request.POST['receivedate']
+
+        # validate the received quantity
+        if not receive_qty.isdigit() or int(receive_qty) <= 0:
+            dict = {
+                'message': _('Received quantity must be a positive integer')
+            }
+            return render(request, "app_form.html", dict)
 
         # retrieve the product instance using the productname
         product = Product.objects.filter(productname=productname).first()
