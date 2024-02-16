@@ -10,6 +10,7 @@ urlpatterns = [
 
     path('add_supplier', views.add_supplier, name='add_supplier'),
     path('supplier', views.supplier, name="supplier"),
+    path('search_supplier', views.search_supplier, name="search_supplier"),
     path('edit_supplier/<str:supplierid>', views.edit_supplier, name="edit_supplier"),
 
     path('edit_supplier/save_edit_supplier/<str:supplierid>', views.save_edit_supplier, name="save_edit_supplier"),
@@ -17,6 +18,7 @@ urlpatterns = [
 
     path('add_product', views.add_product, name='add_product'),
     path('product', views.product, name="product"),
+    path('search_product', views.search_product, name="search_product"),
     path('edit_product/<str:productid>', views.edit_product, name="edit_product"),
     
     path('edit_product/save_edit_product/<str:productid>', views.save_edit_product, name="save_edit_product"),
