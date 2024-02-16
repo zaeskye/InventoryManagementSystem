@@ -20,7 +20,16 @@ class Product(models.Model):
     productprice = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
-        return self.productname
+        return self.productid
+
+    def substract_quantity(self, quantity):
+        quantity = int(quantity) # convert quantity to an integer
+        self.productqty -= quantity
+
+        if self.productqty < 0:
+            self.productqty = 0
+
+        self.save()
 
     @property
     def supplier_name(self):
@@ -35,6 +44,13 @@ class Receiver(models.Model):
     receivedate = models.DateField()
     receivestatus = models.CharField(max_length=100)
 
+    def save(self, *args, **kwargs):
+        # call the superclass's save() method to save the Receiver instance
+        super().save(*args, **kwargs)
+
+        # substract the received quantity from the product quantity
+        self.product.substract_quantity(self.receiveqty)
+
     @property
     def product_name(self):
-        return self.product.productname
+        return self.product.productid
