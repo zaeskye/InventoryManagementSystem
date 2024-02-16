@@ -42,6 +42,14 @@
 
             <a href="{% url 'inventory:add_supplier' %}" style="float: right;" class="btn btn-success">Add New Supplier</a>
 
+            <br>
+
+            <form method="get" action="{% url 'inventory:search_supplier' %}">
+                <input type="text" name="q" value="{{ request.GET.q }}" placeholder="Search Supplier">
+                <button type="submit" class="btn btn-primary">Search</button>
+                <a href="{% url 'inventory:supplier' %}" class="btn btn-secondary">Clear</a>
+            </form>
+
             <br><br>
 
             <table class="table table-css table-bordered table-hover">
@@ -70,6 +78,19 @@
                         </td>
                     </tr>
                     {% endfor %}
+
+                    {% if search_results_supplier %}
+                        {% for supplier in search_results_supplier %}
+                            <tr>
+                                <td class="align-middle">{{supplier.supplierid}}</td>
+                                <td class="align-middle">{{supplier.suppliername}}</td>
+                                <td class="align-middle">{{supplier.supplierphonenum}}</td>
+                                <td class="align-middle">{{supplier.supplieremail}}</td>
+                                <td class="align-middle">{{supplier.supplieraddress}}</td>
+                                <td class="align-middle"></td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
                 </tbody>
             </table>
         </div>
