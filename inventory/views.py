@@ -91,12 +91,12 @@ def add_product(request):
     if request.method == 'POST':
         product_id = request.POST['productid']
         product_name = request.POST['productname']
-        suppliername = request.POST['supplier']
+        supplierid = request.POST['supplier']
         product_qty = request.POST['productqty']
         product_price = request.POST['productprice']
 
         # retrieve the supplier instance using the suppliername
-        supplier = Supplier.objects.filter(suppliername=suppliername).first()
+        supplier = Supplier.objects.filter(supplierid=supplierid).first()
 
         if not supplier:
             dict = {
@@ -108,11 +108,13 @@ def add_product(request):
         data = Product(productid=product_id, productname=product_name, supplier=supplier, productqty=product_qty, productprice=product_price)
         data.save()
         dict = {
-            'message':'Product successfully added'
+            'message':'Product successfully added',
+            'suppliers': Supplier.objects.all()
         }
     else:
         dict = {
-            'message':''
+            'message':'',
+            'suppliers': Supplier.objects.all()
         }
     return render(request, "add_product.html", dict)
 
@@ -148,12 +150,12 @@ def app_form(request):
     if request.method == 'POST':
         receiver_name = request.POST['receivername']
         receiver_positions = request.POST['receiverpositions']
-        productname = request.POST['product']
+        productid = request.POST['product']
         receive_qty = request.POST['receiveqty']
         receive_date = request.POST['receivedate']
 
         # retrieve the product instance using the productname
-        product = Product.objects.filter(productname=productname).first()
+        product = Product.objects.filter(productid=productid).first()
 
         if not product:
             dict = {
@@ -165,11 +167,13 @@ def app_form(request):
         data = Receiver(receivername=receiver_name, receiverpositions=receiver_positions, product=product, receiveqty=receive_qty, receivedate=receive_date)
         data.save()
         dict = {
-            'message':'Application submitted'
+            'message':'Application submitted',
+            'products':Product.objects.all(),
         }
     else:
         dict = {
-            'message':''
+            'message':'',
+            'products':Product.objects.all(),
         }
     return render(request, "app_form.html", dict)
 
