@@ -123,6 +123,15 @@ def product(request):
     }
     return render(request, "product.html", dict)
 
+def search_product(request):
+    query = request.GET.get('q')
+    if query:
+        products = Product.objects.filter(productname__icontains=query)
+        context = {'search_results': products}
+    else:
+        context = {}
+    return render(request, "product.html", context)
+
 def edit_product(request,productid):
     data = Product.objects.get(productid=productid)
     dict = {
