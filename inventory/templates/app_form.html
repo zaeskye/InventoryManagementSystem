@@ -74,7 +74,9 @@
                         <select class="form-control" id="product" name="product">
                             <option value="">Select a product</option>
                             {% for product in products %}
-                                <option value="{{product.productid}}">{{product.productid}}</option>
+                                {% if product.productqty > 0%}
+                                    <option value="{{product.productid}}">{{product.productid}} - {{product.productqty }}</option>
+                                {% endif %}
                             {% endfor %}
                         </select>
                     </div>
