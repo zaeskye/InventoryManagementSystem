@@ -43,26 +43,28 @@
                 {% csrf_token %}
                 <div class="form-group">
                      <label for="suppliername">Supplier Name:</label>
-                    <input type="text" class="form-control" id="suppliername" name="suppliername" value="{{ data.suppliername }}" disabled>
+                    <input type="text" class="form-control" id="suppliername" name="suppliername" value="{{ data.suppliername }}">
                 </div>
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="supplierphonenum">Phone Number:</label>
-                        <input type="text" class="form-control" id="supplierphonenum" name="supplierphonenum" placeholder="Phone Number">
+                        <input type="text" class="form-control" id="supplierphonenum" name="supplierphonenum" value="{{data.supplierphonenum}}">
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="supplieremail">Email:</label>
-                        <input type="text" class="form-control" id="supplieremail" name="supplieremail" placeholder="Email">
+                        <input type="text" class="form-control" id="supplieremail" name="supplieremail" value="{{data.supplieremail}}">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="supplieraddress">Address:</label>
-                    <input type="text" class="form-control" id="supplieraddress" name="supplieraddress" placeholder="Address">
+                    <input type="text" class="form-control" id="supplieraddress" name="supplieraddress" value="{{data.supplieraddress}}"
                 </div>
 
+                <br>
+                
                 <center>
                     <button type="submit" href="/" class="btn btn-success">Save</button>
                     <button id="backButton" type="button" href="/" class="btn btn-secondary">Back</button>
