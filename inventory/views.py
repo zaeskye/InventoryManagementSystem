@@ -222,3 +222,6 @@ def save_edit_receiver(request, receiverid):
     data.receivestatus = receive_status
     data.save()
     return HttpResponseRedirect(reverse('inventory:receiver'))
+
+def about(request):
+    return render(request, 'about.html')
