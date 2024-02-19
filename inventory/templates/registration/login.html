@@ -5,11 +5,14 @@
     <title>Login</title>
 </head>
 <body>
-    <h1>Login</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Login</button>
-    </form>
+    <center>
+        <h1>Welcome to e-Inventory</h1>
+        <h3>Please login to continue</h3>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Login</button>
+        </form>
+    </center>
 </body>
 </html>
