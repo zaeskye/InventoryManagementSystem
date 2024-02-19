@@ -40,7 +40,7 @@
             <br>
             <h2>Product List</h2>
             
-            <a href="{% url 'inventory:add_product' %}" style="float: right;" class="btn btn-success">Add New Stock</a>
+            <a href="{% url 'inventory:add_product' %}" style="float: right;" class="btn btn-success">Add New Product</a>
 
             <br>
 
@@ -87,7 +87,10 @@
                                 <td>{{ product.supplier }}</td>
                                 <td>{{ product.productqty }}</td>
                                 <td>{{ product.productprice }}</td>
-                                <td></td>
+                                <td>
+                                    <a href="edit_product/{{data.productid}}" class="btn btn-success">Edit Details</a> <br><br>
+                                    <a href="delete_product/{{data.productid}}" class="btn btn-danger">Delete Stock</a>
+                                </td>
                             </tr>
                         {% endfor %}
                     {% endif %}
