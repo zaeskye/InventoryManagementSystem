@@ -53,15 +53,14 @@
                 </div>
 
                 <div class="col">
-                    {% for product in out_of_stock_products %}
                     <div class="card text-white bg-danger mb-3" style="max-width: 18rem; height: 90%;">
                         <div class="card-header">Out of Stock</div>
                         <div class="card-body">
-                            <p class="card-text">Product ID: {{ product.productid }}</p>
-                            <p class="card-text">Product name: {{ product.productname }}</p>
+                            {% for product in out_of_stock_products %}
+                                <p class="card-text">Product name: {{ product.productname }} ({{product.productid}})</p>
+                            {% endfor %}
                         </div>
                     </div>
-                    {% endfor %}
                 </div>
 
                 <div class="col">
