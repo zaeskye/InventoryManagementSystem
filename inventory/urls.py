@@ -28,6 +28,8 @@ urlpatterns = [
     path('receiver', views.receiver, name="receiver"),
     path('edit_receiver/<str:receiverid>', views.edit_receiver, name="edit_receiver"),
     path('edit_receiver/save_edit_receiver/<str:receiverid>', views.save_edit_receiver, name="save_edit_receiver"),
+
+    path('about', views.about, name="about"),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

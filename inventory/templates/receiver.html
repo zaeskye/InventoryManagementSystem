@@ -11,7 +11,8 @@
 
     <body>
         <div class="sidenav">
-            <a href="{% url 'inventory:index' %}"><i class="fa fa-dashboard"></i> Dashboard</a>
+            <a href="{% url 'inventory:index' %}" style="font-family:Verdana, Geneva, Tahoma, sans-serif"> e-Inventory System</a>
+            <a href="{% url 'inventory:index' %}"> Dashboard</a>
             
             <button class="dropdown-btn">Product
                 <i class="fa fa-caret-down"></i>
@@ -33,7 +34,7 @@
                 <a href="{% url 'inventory:supplier' %}">List</a>
             </div>
 
-            <a href="#">About</a>
+            <a href="{% url 'inventory:about' %}">About</a>
         </div>
 
         <div class="main">

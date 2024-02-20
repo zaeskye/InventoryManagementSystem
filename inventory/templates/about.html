@@ -1,0 +1,74 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>About</title>
+        <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/sidenav.css' %}">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+    <body>
+        <div class="sidenav">
+            <a href="{% url 'inventory:index' %}" style="font-family:Verdana, Geneva, Tahoma, sans-serif"> e-Inventory System</a>
+            <a href="{% url 'inventory:index' %}"> Dashboard</a>
+            
+            <button class="dropdown-btn">Product
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                <a href="{% url 'inventory:add_product' %}">New Product</a>
+                <a href="{% url 'inventory:product' %}">List</a>
+            </div>
+
+            <a href="{% url 'inventory:app_form' %}">Application Form</a>
+
+            <a href="{% url 'inventory:receiver' %}">Receiver</a>
+
+            <button class="dropdown-btn">Suppliers
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                <a href="{% url 'inventory:add_supplier' %}">New Supplier</a>
+                <a href="{% url 'inventory:supplier' %}">List</a>
+            </div>
+
+            <a href="{% url 'inventory:about' %}">About</a>
+        </div>
+
+        <div class="main">
+            <br>
+            <center>
+                <h1>About Us</h1><br>
+                <p style="font-style: italic;">Welcome to e-Inventory system! <br>
+                    Welcome to e-Inventory system of Perbadanan Labuan. <br>
+                    Developed as part of an industrial training program by student, this system represents a <br>
+                    pivotal step towards modernizing and optimizing our deparment's inventory operations. <br>
+                </p>
+
+                    <br>
+                <p>
+                    With a focus on compliance, transparency, and efficiency, this system offers robust features tailored to meet the <br>
+                    unique needs and reguations of the government sector. From procurement and asset tracking to inventory monitoring <br>
+                    this platform is designed to streamline workflows, reduce paperwork, and enhance accountability across all levels of the department. <br>
+
+                    <br>
+
+                    Through rigorous testing and continuous improvement, this system strive to deliver a reliable and user-friendly solution <br>
+                    that empowers the department to fulfill its mission with greater agility and effectiveness. <br>
+
+                    <br>
+
+                    Thank you for choosing e-Inventory system! <br>
+
+                </p>
+            </center>
+        </div>
+
+        <script src="{% static 'js/sidenav.js' %}"></script>
+        <script src="{% static 'js/chart.min.js' %}"></script>
+    </body>
+</html>
